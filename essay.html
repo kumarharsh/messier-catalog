@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Messier Catalog - Essay</title>
     <link rel="stylesheet" href="https://use.typekit.net/wqi6pnl.css" />
+    <link rel="stylesheet" href="src/index.css" />
   </head>
   <body>
     <article id="article">
@@ -13,30 +14,41 @@
 
       <h2>Messaging</h2>
       <p>
-        This interactive visualization tells the story of Charles Messier, who
-        was an astronomer in the 18th century. He had a dream of becoming one of
-        the greatest discoverers of comets. By the end of his life, he did
-        discover 13 comets, but the world doesn't remember him by his
-        discoveries. In the quest to be able to spot comets better, he had
-        meticulously maintained a detailed list of objects which were not a
-        comet. This list came to be known as the Messier Catalog - a first of
-        its kind list with the most accurate observations of 110 prominent
-        deep-sky objects, which formed a backbone of future astronomy.
+        This interactive visualization tells the story of Charles Messier, an
+        18th century astronomer. He had a dream of becoming one of the greatest
+        discoverers of comets. By the end of his life, he discovered 13 comets,
+        but the world doesn't remember him by his discoveries.
+      </p>
+
+      <p>
+        The central question answered by the visualization is why was Messier's
+        contribution so important, and what did he find which was so valuable?
+      </p>
+
+      <p>
+        In the quest to be able to spot comets better, he had meticulously
+        maintained a detailed list of celestial objects which were not comets.
+        This list came to be known as the <strong>Messier Catalog</strong> - a
+        first of its kind list with the most accurate observations of 110
+        prominent deep-sky objects, which formed a backbone of future astronomy.
+        This project will try to bring this answer to the fore by the use of
+        data.
       </p>
 
       <h2>Narrative Structure</h2>
       <p>
         This story follows the <strong>Martini Glass</strong> structure, where
         the readers are lead through the whole story, and at the end they are
-        left to explore the data as they see fit. The first 2 charts offer just
-        the visualization, but the last chart lets users interact with the chart
-        and view each object in detail.
+        left to explore the data presented to them as they see fit. The first 3
+        charts offer just the visualization - of Messier's discoveries, as well
+        as his two published lists. The last chart lets users interact with the
+        final chart and view each object in detail.
       </p>
 
       <h2>Visual Structure</h2>
       <p>
-        The text-based story gives a narrative structure to the visualization.
-        Each visualization is also connected by the common theme of Messier's
+        The text-based story is based on a linear visual structure. Each
+        visualization is also connected by the common theme of Messier's
         lifetime and the years his observations and discoveries were made in.
         The catalog visualizations also have the year highlighted in bold so
         that the user has a sense of which data point relates to which year of
@@ -45,27 +57,69 @@
 
       <h2>Scenes</h2>
       <p>
-        There is only one overarching scene in this visualization - that is the
-        story of Messier. It follows a chronological path through his life, and
-        presents the relevant data when the readers have been informed about
-        significant moments of his life.
+        The four scenes follow one overarching theme in this visualization - to
+        chart the story of Messier. It follows a chronological path through his
+        life, and presents the relevant data when the readers have been informed
+        about significant moments of his life. The scenes are as follows:
       </p>
+      <ol>
+        <li>Messier's discoveries or co-discoveries of comets.</li>
+        <li>
+          A chronological mapping of each object observed by Messier and
+          recorded in his first published list.
+        </li>
+        <li>
+          A chronological mapping of each object observed by Messier and
+          recorded in his second published list.
+        </li>
+        <li>
+          A chronological mapping of all objects observed by Messier and
+          attributed to him.
+        </li>
+      </ol>
 
       <h2>Annotations</h2>
-      <p>
-        The first chart (comets) has annotations which highlight the period
-        during which Messier recorded all the observations in his Catalog. The
-        lines have the same colour as the object he recorded in his catalog (the
-        Crab Nebula and M110).
-      </p>
+      <ol>
+        <li>
+          The first chart (comets) has annotations which highlight the period
+          during which Messier recorded all the observations in his Catalog. The
+          lines have the same colour as the object he recorded in his catalog
+          (the Crab Nebula and M110).
+        </li>
+        <li>
+          The second, third and fourth charts have the year annotation on the
+          bottom right, which shows the year of discovery of the items popping
+          up on the chart.
+        </li>
+        <li>
+          The second, third and fourth charts (Catalog charts) have the year
+          annotation on the bottom right, which shows the year of discovery of
+          the items popping up on the chart.
+        </li>
+      </ol>
 
       <h2>Parameters</h2>
       <p>The visualizations work on two parameters</p>
       <ol>
         <li>
-          which aspect is shown - the discovery phase, or the observation phase.
+          which <strong>aspect</strong> is shown on each chart - the discovery
+          of comets, or the observations of the Messier objects.
         </li>
         <li>the year of the discovery/observation.</li>
+        <li>
+          the Messier Catalog <strong>publication number</strong> (1774, 1781,
+          or the full list) of the chart.
+        </li>
+        <li>
+          To <strong>draw</strong> the chart elements or not? Only when the user
+          has scrolled a significant portion of the chart into view does the
+          drawing start.
+        </li>
+        <li>
+          To <strong>allow user interaction</strong> for the chart or not? Only
+          once the user scrolls past the last chart do all charts become
+          interactive.
+        </li>
       </ol>
       <p>The visualizations have these states:</p>
       <ol>
@@ -99,6 +153,5 @@
         more data.
       </p>
     </article>
-    <script src="dist/bundle.js"></script>
   </body>
 </html>
