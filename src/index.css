@@ -70,14 +70,6 @@ article {
 .clickable {
   cursor: pointer;
 }
-.milky-way-silhouette {
-  position: absolute;
-  z-index: -1;
-  transform: translate(50px ,50px);
-  opacity: 0.5;
-  width: 800px;
-  height: 500px;
-}
 .hide {
   display: none;
 }
@@ -241,13 +233,27 @@ a[href]:visited, a.ref {
     border-bottom: 0px solid black;
   }
   100% {
-    border-bottom: 1px solid #090088;
+    border-bottom: 7px solid #090088;
     box-shadow:
       0 4px white,
-      0 6px #930077,
-      0 10px white,
-      0 13px #e4007c,
-      0 17px white,
-      0 21px #ffbd39;
+      0 9px #930077,
+      0 13px white,
+      0 16px #e4007c,
+      0 20px white,
+      0 22px #ffbd39;
+  }
+}
+
+@media (max-width: 600px) {
+  p, .footnote-title {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  ol, ul {
+    padding-right: 1rem;
+  }
+  .chart svg {
+    height: auto;
+    width: 100%;
   }
 }

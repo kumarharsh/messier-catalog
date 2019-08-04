@@ -32,9 +32,6 @@ async function init() {
   const $catalogList2 = document.querySelector('#catalog-list2');
   const $catalogCtr = document.querySelector('#full-catalog');
   const $unlockMsg = document.querySelector('#unlock-message');
-  document
-    .querySelectorAll('.milky-way-silhouette')
-    .forEach((node) => node.classList.remove('hide'));
   const discoveryMarks = [
     catalogDiscoveries[0].date,
     catalogDiscoveries[catalogDiscoveries.length - 1].date
