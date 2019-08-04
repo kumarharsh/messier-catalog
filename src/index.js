@@ -29,6 +29,9 @@ async function init() {
   const $catalog1774Ctr = document.querySelector('#catalog-1774');
   const $catalogCtr = document.querySelector('#full-catalog');
   const $unlockMsg = document.querySelector('#unlock-message');
+  document
+    .querySelectorAll('.milky-way-silhouette')
+    .forEach((node) => node.classList.remove('hide'));
 
   const intersectionHandler = function(entries) {
     entries.forEach((entry) => {

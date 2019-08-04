@@ -78,6 +78,9 @@ article {
   width: 800px;
   height: 500px;
 }
+.hide {
+  display: none;
+}
 
 figcaption {
   font-size: 1.4rem;
