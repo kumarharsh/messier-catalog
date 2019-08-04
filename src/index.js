@@ -14,10 +14,12 @@ async function init() {
     discoveryDateAccuracy: catalogDiscoveries[index].accuracy,
     selfDiscovered: catalogDiscoveries[index].discovered
   }));
-  const catalogComposite1774 = catalogComposite.slice(0, 45);
+  const catalogCompositeList1 = catalogComposite.slice(0, 45);
+  const catalogCompositeList2 = catalogComposite.slice(45);
   const state = {
     cometsPlotted: false,
-    catalog1774Plotted: false,
+    catalogList1Plotted: false,
+    catalogList2Plotted: false,
     catalogFullPlotted: false,
     allowInteraction: false
   };
@@ -26,12 +28,17 @@ async function init() {
   const height = 500;
 
   const $cometsCtr = document.querySelector('#comets');
-  const $catalog1774Ctr = document.querySelector('#catalog-1774');
+  const $catalogList1 = document.querySelector('#catalog-list1');
+  const $catalogList2 = document.querySelector('#catalog-list2');
   const $catalogCtr = document.querySelector('#full-catalog');
   const $unlockMsg = document.querySelector('#unlock-message');
   document
     .querySelectorAll('.milky-way-silhouette')
     .forEach((node) => node.classList.remove('hide'));
+  const discoveryMarks = [
+    catalogDiscoveries[0].date,
+    catalogDiscoveries[catalogDiscoveries.length - 1].date
+  ];
 
   const intersectionHandler = function(entries) {
     entries.forEach((entry) => {
@@ -41,16 +48,32 @@ async function init() {
       ) {
         if (entry.target === $cometsCtr && !state.cometsPlotted) {
           state.cometsPlotted = true;
-          plotCometDiscoveries($cometsCtr, cometsData, width, height, {
+          plotCometDiscoveries(
+            $cometsCtr,
+            cometsData,
+            discoveryMarks,
+            width,
+            height,
+            {
+              renderData: true,
+              allowInteraction: state.allowInteraction
+            }
+          );
+        } else if (
+          entry.target === $catalogList1 &&
+          !state.catalogList1Plotted
+        ) {
+          state.catalogList1Plotted = true;
+          plotSkyCatalog($catalogList1, catalogCompositeList1, width, height, {
             renderData: true,
             allowInteraction: state.allowInteraction
           });
         } else if (
-          entry.target === $catalog1774Ctr &&
-          !state.catalog1774Plotted
+          entry.target === $catalogList2 &&
+          !state.catalogList2Plotted
         ) {
-          state.catalog1774Plotted = true;
-          plotSkyCatalog($catalog1774Ctr, catalogComposite1774, width, height, {
+          state.catalogList2Plotted = true;
+          plotSkyCatalog($catalogList2, catalogCompositeList2, width, height, {
             renderData: true,
             allowInteraction: state.allowInteraction
           });
@@ -62,14 +85,25 @@ async function init() {
             renderData: true,
             allowInteraction: state.allowInteraction
           });
-          plotSkyCatalog($catalog1774Ctr, catalogComposite1774, width, height, {
+          plotSkyCatalog($catalogList1, catalogCompositeList1, width, height, {
             renderData: true,
             allowInteraction: state.allowInteraction
           });
-          plotCometDiscoveries($cometsCtr, cometsData, width, height, {
+          plotSkyCatalog($catalogList2, catalogCompositeList2, width, height, {
             renderData: true,
             allowInteraction: state.allowInteraction
           });
+          plotCometDiscoveries(
+            $cometsCtr,
+            cometsData,
+            discoveryMarks,
+            width,
+            height,
+            {
+              renderData: true,
+              allowInteraction: state.allowInteraction
+            }
+          );
         } else if (entry.target === $unlockMsg) {
           $unlockMsg.classList.add('show');
         }
@@ -82,7 +116,7 @@ async function init() {
     rootMargin: '0px',
     threshold: 0.75
   };
-  [$cometsCtr, $catalog1774Ctr, $catalogCtr, $unlockMsg].forEach((target) => {
+  [$cometsCtr, $catalogList1, $catalogList2, $catalogCtr, $unlockMsg].forEach((target) => {
     const observer = new IntersectionObserver(
       intersectionHandler,
       observerOptions
@@ -90,11 +124,15 @@ async function init() {
     observer.observe(target);
   });
 
-  plotCometDiscoveries($cometsCtr, cometsData, width, height, {
+  plotCometDiscoveries($cometsCtr, cometsData, discoveryMarks, width, height, {
     renderData: false,
     allowInteraction: state.allowInteraction
   });
-  plotSkyCatalog($catalog1774Ctr, catalogComposite1774, width, height, {
+  plotSkyCatalog($catalogList1, catalogCompositeList1, width, height, {
+    renderData: false,
+    allowInteraction: state.allowInteraction
+  });
+  plotSkyCatalog($catalogList2, catalogCompositeList2, width, height, {
     renderData: false,
     allowInteraction: state.allowInteraction
   });

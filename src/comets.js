@@ -6,6 +6,7 @@ const MESSIER_DEATH = '12-Apr-1817';
 export default function plotCometDiscoveries(
   element,
   cometsData,
+  marks,
   width,
   height,
   options
@@ -124,7 +125,11 @@ export default function plotCometDiscoveries(
             <span class="object-name">${d['Desig. new']}</span>
             <span class="object-type">${d['Disco. Date']}</span>
           </div>
-          ${options.allowInteraction ? '<div class="cta">Click to learn more</div>' : ''}
+          ${
+            options.allowInteraction
+              ? '<div class="cta">Click to learn more</div>'
+              : ''
+          }
         `
         )
         .transition()
@@ -213,4 +218,37 @@ export default function plotCometDiscoveries(
     .transition()
     .delay((_, i, list) => list.length * 200 + 500 + i * 50)
     .attr('opacity', 1);
+
+  chart
+    .append('g')
+    .attr('transform', `translate(${margin}, ${margin})`)
+    .selectAll('g.discovery-mark')
+    .data(marks.map(parseDiscovDate))
+    .enter()
+    .append('g')
+    .attr('class', 'discovery-mark')
+    .append('line')
+    .transition()
+    .delay(6000)
+    .attr('stroke', (_, i) => (i === 0 ? '#8a00d4' : '#ffa1c5'))
+    .attr('x1', (d) => xScale(d))
+    .attr('x2', (d) => xScale(d))
+    .attr('y1', 0)
+    .attr('y2', height);
+  chart
+    .selectAll('g.discovery-mark')
+    .append('text')
+    .attr('opacity', 0)
+    .attr('transform', (d) => `translate(${xScale(d)}, 50) rotate(-90)`)
+    .text((_, i) => (i === 0 ? 'Recorded M1' : 'Recorded M110'))
+    .attr('dy', -5)
+    .attr('font-size', 12)
+    .attr('text-anchor', 'end')
+    .transition()
+    .delay(6000)
+    .attr('opacity', 1);
+}
+
+function parseDiscovDate(d) {
+  return parse(d, 'uuuu MMM dd', new Date());
 }

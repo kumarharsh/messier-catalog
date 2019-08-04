@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Messier Catalog - Essay</title>
+    <link rel="stylesheet" href="https://use.typekit.net/wqi6pnl.css" />
+  </head>
+  <body>
+    <article id="article">
+      <h1>Narrative Visualization Essay</h1>
+
+      <h2>Messaging</h2>
+      <p>
+        This interactive visualization tells the story of Charles Messier, and
+        highlights his discoveries, and why his observations have become to be
+        more famous than any of his discoveries.
+      </p>
+
+      <h2>Narrative Structure</h2>
+      <p>
+        This story follows the <strong>Martini Glass</strong> structure, where
+        the readers are lead through the whole story, and at the end they are
+        left to explore the data as they see fit. The first 2 charts offer just
+        the visualization, but the last chart lets users interact with the chart
+        and view each object in detail.
+      </p>
+
+      <h2>Visual Structure</h2>
+      <p>
+        The text-based story gives a narrative structure to the visualization.
+        Each visualization is also connected by the common theme of Messier's
+        lifetime and the years his observations and discoveries were made in.
+        The catalog visualizations also have the year highlighted in bold so
+        that the user has a sense of which data point relates to which year of
+        discovery.
+      </p>
+
+      <h2>Scenes</h2>
+      <p>
+        There is only one overarching scene in this visualization - that is the
+        story of Messier. It follows a chronological path through his life, and
+        presents the relevant data when the readers have been informed about
+        significant moments of his life.
+      </p>
+
+      <h2>Annotations</h2>
+      <p>
+        The first chart (comets) has annotations which highlight the period
+        during which Messier recorded all the observations in his Catalog. The
+        lines have the same colour as the object he recorded in his catalog (the
+        Crab Nebula and M110).
+      </p>
+
+      <h2>Parameters</h2>
+      <p>The visualizations work on two parameters</p>
+      <ol>
+        <li>
+          which aspect is shown - the discovery phase, or the observation phase.
+        </li>
+        <li>the year of the discovery/observation.</li>
+      </ol>
+      <p>The visualizations have these states:</p>
+      <ol>
+        <li>
+          <strong>interactivity</strong> - once the reader has read through to
+          the end of the article, the interactivity state is set to
+          <code>true</code>, and after that, the reader can interact with any of
+          the visualizations.
+        </li>
+        <li>
+          <strong>publication year</strong> - Messier published two lists, and
+          the last two visualizations show different list data.
+        </li>
+        <li>
+          <strong>tooltip shown</strong> - once interactivity is enabled, the
+          viewer can click on data points on the chart, and these actions fire
+          of events which show tooltips with relevant data for each data point.
+        </li>
+      </ol>
+
+      <h2>Triggers</h2>
+      <p>
+        The scroll is used to trigger off the interactivity and publication
+        year, and the user click controls the tooltip shown state.
+      </p>
+      <p>
+        To guide the reader towards the content, animations are used when the
+        reader has scrolled atleast 50% into a chart's area. The
+        <strong>cursor</strong> also turns into a <strong>pointer</strong> to
+        indicate to the reader that they can click the chart's data points for
+        more data.
+      </p>
+    </article>
+    <script src="dist/bundle.js"></script>
+  </body>
+</html>

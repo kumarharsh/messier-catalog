@@ -34,7 +34,7 @@ h2 {
   font-size: 3em;
 }
 
-p, ul {
+p, ul, ol {
   max-width: 60rem;
   margin: 0 auto 1.5rem;
 }
