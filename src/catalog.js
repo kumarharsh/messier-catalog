@@ -1,6 +1,5 @@
 import * as d3 from 'd3';
 import { parse } from 'date-fns';
-// import './images';
 
 const SYMBOL_INDEX = {
   cluster: { symbol: d3.symbolTriangle, color: '#ff487e', label: 'Cluster' },
@@ -55,7 +54,7 @@ export default function plotSkyCatalog(element, catalog_data, width, height, opt
   if (!options.renderData) {
     chart
       .append('image')
-      .attr('xlink:href', 'src/db/images/sky.svg')
+      .attr('xlink:href', 'src/images/sky.svg')
       .attr('transform', `translate(${margin},${margin})`)
       .attr('width', width)
       .attr('height', height)
@@ -200,7 +199,7 @@ export default function plotSkyCatalog(element, catalog_data, width, height, opt
             `
           <div id="close-infobox">×</div>
           <div class="messier-data-grid">
-            <div class="image"><img src='src/db/images/catalog/${d['Picture']}' alt='${
+            <div class="image"><img src='src/images/catalog/${d['Picture']}' alt='${
               d['Messier number']
             }'></div>
             <div class="label">Messier number</div>
@@ -222,7 +221,7 @@ export default function plotSkyCatalog(element, catalog_data, width, height, opt
             <div class="label">Declination</div>
             <div class="value">${d['Declination']}</div>
           </div>
-          <img class="art-image" src='src/db/images/catalog/${d['Picture']}' alt=""></div>
+          <img class="art-image" src='src/images/catalog/${d['Picture']}' alt=""></div>
         `
           )
           .transition()
